@@ -1,7 +1,11 @@
 <script setup>
     import { state } from '../store/index.js'
-    
-
+    import CategoriaAdmin from '../components/CategoriaAdmin.vue'
+    import { useCategoryStore } from '../store/categoryStore';
+    import { ref } from 'vue'
+    const store = useCategoryStore()
+    let msg = ref()
+    const bbb = 0
     console.log(state.admins.log)
     function proverka() {
         if (state.admins.inp == state.admins.password){
@@ -18,6 +22,24 @@
     function nn(){
         state.admins.log_button = 2
     }
+    function addCat() {
+    const categoryName = msg.value.trim(); // Убираем лишние пробелы
+
+    if (!categoryName) {
+        console.log("Введите название категории");
+        return;
+    }
+
+    // Проверяем, есть ли уже такая категория
+    if (store.categories.includes(categoryName)) {
+        console.log("Такая категория уже есть");
+        return;
+    }
+
+    // Если такой категории нет — добавляем
+    store.addCategory(categoryName);
+    console.log("Категория добавлена:", categoryName);
+}
 
 </script>
 <template>
@@ -34,15 +56,11 @@
         <div class="create_categor">
             <div v-if="state.admins.log_button == 1">
                 <div >
-                    <button>create</button>
-                    <button>edit</button>
-                    <button>delete</button>
+                    <button @click="addCat">add</button>
+                    <input v-model="msg">
                 </div>
-                <p>Категория 1</p>
-                <p>Категория 2</p>
-                <p>Категория 3</p>
-                <p>Категория 4</p>
-                <p>Категория 5</p>
+                <CategoriaAdmin></CategoriaAdmin>
+
             </div>
         </div>
 
