@@ -1,5 +1,6 @@
 <script setup>
-import { useCategoryStore } from '../store/categoryStore';
+  import { useCategoryStore } from '../store/categoryStore';
+  import { ref } from 'vue'
 let msgEdit = ref()
 const categoryStore = useCategoryStore();
 </script>

@@ -1,9 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+  import mainList from './components/main.vue'
 </script>
 
 <template>
-  
+  <mainList/>
   <router-view />
 </template>
 
