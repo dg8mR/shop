@@ -24,8 +24,8 @@
         <li class="menu-item dropdown">
           <a href="#">Категории</a>
           <ul class="dropdown-menu">
-            <li v-for="category in categoryStore.categories" :key="category">
-              <a href="#">{{ category }}</a>
+            <li v-for="(category, id) in categoryStore.categories" :key="id">
+              <router-link :to="`/categori/${id}`">{{ category }}</router-link>
             </li>
           </ul>
         </li>
@@ -39,16 +39,7 @@
   </header>
 
   <!-- Секция с товарами -->
-  <section class="products">
-    <h2>Популярные товары</h2>
-    <div class="product-list">
-      
-        <li v-for="tovar in tovarStore.tovares" :key="tovar.id">
-        {{ tovar.name }} 
-        </li>
-      
-    </div>
-  </section>
+
 </template>
 
 <script>
